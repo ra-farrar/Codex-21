@@ -444,12 +444,8 @@ body[data-viewport="mobile"] #apps {
 
 /* ======== Mobile Collage ======== */
 body[data-viewport="mobile"] #collage {
-  /* Go edge-to-edge on narrow screens */
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 0;
+  margin: clamp(10px, 2vw, 20px) 0;
+  padding: clamp(16px, 3vw, 28px);
   border-radius: 0;
 
   /* Fill the available viewport height without exceeding 400px */
@@ -461,19 +457,13 @@ body[data-viewport="mobile"] #collage {
   body[data-viewport="mobile"] #collage {
     height: min(100dvh, 400px);
     max-height: 400px;
-    margin-left: calc(50% - 50dvw);
-    margin-right: calc(50% - 50dvw);
   }
 }
 
 #collage .collage__frame {
   height: 100%;
-  width: min(calc(100% - (var(--page-padding-inline) * 2)), var(--page-max));
-  margin: 0 auto;
-  padding: clamp(40px, 10vw, 72px);
   width: min(100%, var(--page-max));
   margin: 0 auto;
-  padding: clamp(40px, 10vw, 72px);
   padding: clamp(16px, 4vw, 24px);
   border-radius: 16px;
   border: 1px solid var(--border);
