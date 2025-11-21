@@ -120,6 +120,7 @@ refreshViewportMode();
 const root = document.documentElement;
 const toggle = document.getElementById('themeToggle');
 const footerLogo = document.getElementById('footerLogo');
+const collageGraphic = document.getElementById('collageGraphic');
 const THEME_KEY = 'theme-mode';
 
 function updateFooterLogo(mode) {
@@ -139,6 +140,16 @@ function updateContactIcons(mode) {
   });
 }
 
+function updateCollageGraphic(mode) {
+  if (!collageGraphic) return;
+  const lightSrc = collageGraphic.dataset.lightSrc || collageGraphic.getAttribute('src');
+  const darkSrc = collageGraphic.dataset.darkSrc || lightSrc;
+  const nextSrc = mode === 'dark' ? darkSrc : lightSrc;
+  if (nextSrc && collageGraphic.getAttribute('src') !== nextSrc) {
+    collageGraphic.setAttribute('src', nextSrc);
+  }
+}
+
 // Detect system preference once (used if no saved choice)
 const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -147,6 +158,7 @@ function applyTheme(mode) {
   if (toggle) toggle.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
   updateFooterLogo(mode);
   updateContactIcons(mode);
+  updateCollageGraphic(mode);
 }
 function getCurrentTheme() {
   const saved = localStorage.getItem(THEME_KEY);
