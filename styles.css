@@ -464,6 +464,15 @@ body[data-viewport="mobile"] #apps {
   pointer-events: none;
 }
 
+.collage-star {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: clamp(48px, 9vw, 96px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: none;
+}
+
 /* ======== Mobile Collage ======== */
 body[data-viewport="mobile"] #collage {
   /* Go edge-to-edge on narrow screens */
@@ -481,6 +490,17 @@ body[data-viewport="mobile"] #collage {
 
 body[data-viewport="mobile"] #collage .collage-frame {
   height: 100%;
+}
+
+body[data-viewport="mobile"] #collage .collage-graphic {
+  width: 80%;
+  left: 10%;
+  bottom: -4%;
+  height: auto;
+}
+
+body[data-viewport="mobile"] #collage .collage-star {
+  display: block;
 }
 
 @supports (min-height: 100dvh) {
