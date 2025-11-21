@@ -471,6 +471,10 @@ body[data-viewport="mobile"] #collage {
   width: min(calc(100% - (var(--page-padding-inline) * 2)), var(--page-max));
   margin: 0 auto;
   padding: clamp(40px, 10vw, 72px);
+  width: min(100%, var(--page-max));
+  margin: 0 auto;
+  padding: clamp(40px, 10vw, 72px);
+  padding: clamp(16px, 4vw, 24px);
   border-radius: 16px;
   border: 1px solid var(--border);
   background: var(--elev);
