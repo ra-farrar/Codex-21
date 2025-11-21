@@ -172,6 +172,8 @@ html[data-debug="1"] .app,
 html[data-debug="1"] .btn             { outline:2px dashed rgba(var(--ol-orange),.6); }
 html[data-debug="1"] #animation .animation-shell { outline:2px dashed rgba(var(--ol-green),.9); }
 html[data-debug="1"] #animation .animation-stage { outline:2px dashed rgba(var(--ol-purple),.9); }
+html[data-debug="1"] #collage { outline:2px dashed rgba(var(--ol-blue),.9); }
+html[data-debug="1"] #collage .collage__frame { outline:2px dashed rgba(var(--ol-green),.9); outline-offset: 6px; }
 html[data-debug="1"] #animation .animation-stage::after {
   content: attr(data-debug-info);
   position: absolute;
@@ -450,18 +452,28 @@ body[data-viewport="mobile"] #collage {
   padding: 0;
   border-radius: 0;
 
-  /* Fill the available viewport height without exceeding 600px */
-  height: min(100vh, 600px);
-  max-height: 600px;
+  /* Fill the available viewport height without exceeding 400px */
+  height: min(100vh, 400px);
+  max-height: 400px;
 }
 
 @supports (min-height: 100dvh) {
   body[data-viewport="mobile"] #collage {
-    height: min(100dvh, 600px);
-    max-height: 600px;
+    height: min(100dvh, 400px);
+    max-height: 400px;
     margin-left: calc(50% - 50dvw);
     margin-right: calc(50% - 50dvw);
   }
+}
+
+#collage .collage__frame {
+  height: 100%;
+  width: min(calc(100% - (var(--page-padding-inline) * 2)), var(--page-max));
+  margin: 0 auto;
+  padding: clamp(40px, 10vw, 72px);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--elev);
 }
 
 /* ======== Mobile Timeline ======== */
