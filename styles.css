@@ -468,6 +468,9 @@ body[data-viewport="mobile"] #collage {
 
 #collage .collage__frame {
   height: 100%;
+  width: min(calc(100% - (var(--page-padding-inline) * 2)), var(--page-max));
+  margin: 0 auto;
+  padding: clamp(40px, 10vw, 72px);
   width: min(100%, var(--page-max));
   margin: 0 auto;
   padding: clamp(40px, 10vw, 72px);
