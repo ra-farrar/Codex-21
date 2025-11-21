@@ -440,6 +440,30 @@ body[data-viewport="mobile"] #apps {
   display: none;
 }
 
+/* ======== Mobile Collage ======== */
+body[data-viewport="mobile"] #collage {
+  /* Go edge-to-edge on narrow screens */
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+  border-radius: 0;
+
+  /* Fill the available viewport height on each device */
+  min-height: 100vh;
+  height: 100vh;
+}
+
+@supports (min-height: 100dvh) {
+  body[data-viewport="mobile"] #collage {
+    min-height: 100dvh;
+    height: 100dvh;
+    margin-left: calc(50% - 50dvw);
+    margin-right: calc(50% - 50dvw);
+  }
+}
+
 /* ======== Mobile Timeline ======== */
 #timeline { display: block; }
 
