@@ -172,6 +172,8 @@ html[data-debug="1"] .app,
 html[data-debug="1"] .btn             { outline:2px dashed rgba(var(--ol-orange),.6); }
 html[data-debug="1"] #animation .animation-shell { outline:2px dashed rgba(var(--ol-green),.9); }
 html[data-debug="1"] #animation .animation-stage { outline:2px dashed rgba(var(--ol-purple),.9); }
+html[data-debug="1"] #collage { outline:2px dashed rgba(var(--ol-blue),.9); }
+html[data-debug="1"] #collage .collage__frame { outline:2px dashed rgba(var(--ol-green),.9); outline-offset: 6px; }
 html[data-debug="1"] #animation .animation-stage::after {
   content: attr(data-debug-info);
   position: absolute;
@@ -468,6 +470,7 @@ body[data-viewport="mobile"] #collage {
   height: 100%;
   width: min(100%, var(--page-max));
   margin: 0 auto;
+  padding: clamp(40px, 10vw, 72px);
   padding: clamp(16px, 4vw, 24px);
   border-radius: 16px;
   border: 1px solid var(--border);
