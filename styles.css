@@ -440,6 +440,30 @@ body[data-viewport="mobile"] #apps {
   display: none;
 }
 
+/* ======== Collage ======== */
+#collage {
+  position: relative;
+  overflow: hidden;
+  height: clamp(420px, 70vh, 820px);
+  padding: 0;
+}
+
+.collage-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.collage-graphic {
+  position: absolute;
+  bottom: -8%;
+  left: -12%;
+  width: 70%;
+  height: 40%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
 /* ======== Mobile Collage ======== */
 body[data-viewport="mobile"] #collage {
   /* Go edge-to-edge on narrow screens */
@@ -453,6 +477,10 @@ body[data-viewport="mobile"] #collage {
   /* Fill the available viewport height without exceeding 600px */
   height: min(100vh, 600px);
   max-height: 600px;
+}
+
+body[data-viewport="mobile"] #collage .collage-frame {
+  height: 100%;
 }
 
 @supports (min-height: 100dvh) {
