@@ -278,6 +278,7 @@ body[data-viewport="large-desktop"] .section--marquee{--marquee-speed-s:16s}
 }
 .section--cta .btn--primary {
   padding-inline:27px;
+  font-family:"Inter Tight", system-ui, sans-serif;
 }
 .btn--primary:hover{
   filter:brightness(1.05);
