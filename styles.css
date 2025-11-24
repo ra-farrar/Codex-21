@@ -610,6 +610,12 @@ body[data-viewport="mobile"] #collage {
   border-radius: 50%;
   background: var(--bg);
   box-shadow: 0 0 0 3px var(--subhead-arrow);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.timeline-dot.is-active {
+  background: var(--subhead-arrow);
+  transform: scale(1.05);
 }
 
 .timeline-date {

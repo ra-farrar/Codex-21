@@ -116,6 +116,56 @@ refreshViewportMode();
   }
 })();
 
+// ========== Timeline active dot animation ==========
+(function () {
+  const DOT_SELECTOR = '.section--timeline .timeline-dot';
+  let rafId = 0;
+  let activeIndex = -1;
+
+  function setActive(index, dots) {
+    if (index === activeIndex) return;
+    if (activeIndex >= 0 && dots[activeIndex]) dots[activeIndex].classList.remove('is-active');
+    if (index >= 0 && dots[index]) dots[index].classList.add('is-active');
+    activeIndex = index;
+  }
+
+  function updateActiveDot() {
+    rafId = 0;
+    const dots = Array.from(document.querySelectorAll(DOT_SELECTOR));
+    if (!dots.length) return;
+
+    const targetY = (window.innerHeight || document.documentElement.clientHeight || 0) * 0.25;
+    let nextIndex = -1;
+
+    dots.forEach((dot, index) => {
+      const rect = dot.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      if (centerY <= targetY) nextIndex = index;
+    });
+
+    if (nextIndex === -1) nextIndex = 0;
+    setActive(nextIndex, dots);
+  }
+
+  function scheduleUpdate() {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(updateActiveDot);
+  }
+
+  function initTimelineActiveDot() {
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    document.addEventListener('viewportchange', scheduleUpdate, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimelineActiveDot, { once: true });
+  } else {
+    initTimelineActiveDot();
+  }
+})();
+
 // ========== Theme Handling (Light/Dark toggle only) ==========
 const root = document.documentElement;
 const toggle = document.getElementById('themeToggle');
