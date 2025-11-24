@@ -569,6 +569,9 @@ body[data-viewport="mobile"] #collage {
   grid-template-rows: auto;
   column-gap: var(--timeline-gap);
   justify-items: stretch;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
   row-gap: 0;
 }
 
@@ -578,6 +581,9 @@ body[data-viewport="mobile"] #collage {
   justify-content: center;
   text-align: center;
   font-family: 'Angkor', cursive;
+  width: 100%;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--subhead-arrow);
