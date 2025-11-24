@@ -655,6 +655,37 @@ body[data-viewport="mobile"] #collage {
   letter-spacing: normal;
 }
 
+.timeline-item--amazon .timeline-role-group {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
+}
+
+.timeline-item--amazon .timeline-employer-badge {
+  font-family: 'Angkor', sans-serif;
+  font-size: var(--size-md);
+  color: var(--subhead-arrow);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+.timeline-item--amazon .timeline-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-item--amazon .timeline-role,
+.timeline-item--amazon .timeline-company {
+  grid-column: auto;
+  grid-row: auto;
+  padding-inline: 0;
+}
+
 @media (min-width: 768px) {
   #timeline {
     display: none;
