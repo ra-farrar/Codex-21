@@ -517,13 +517,13 @@ body[data-viewport="mobile"] #collage {
 .section--timeline {
   --section-bg: var(--elev);
   --section-border: 1px solid transparent;
-  --timeline-date-col: clamp(86px, 22vw, 120px);
-  --timeline-axis-col: 20px;
-  --timeline-gap: clamp(4px, 1.6vw, 10px);
+  /* Size the date column just wide enough to fit the two-line date on the first Amazon role. */
+  --timeline-date-col: calc(8ch + 4px);
+  --timeline-axis-col: 18px;
+  --timeline-gap: clamp(2px, 1vw, 8px);
   --timeline-role-pad: clamp(6px, 2vw, 14px);
   --timeline-date-pad: 0px;
-  --timeline-dot-offset: clamp(8px, 1.8vw, 12px);
-  --timeline-dot-lift: clamp(14px, 3vw, 22px);
+  --timeline-dot-offset: clamp(6px, 1.4vw, 10px);
   --timeline-dot-lift: clamp(8px, 1.6vw, 14px);
   padding: 0;
   font-family: 'Inter Tight', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
@@ -531,7 +531,6 @@ body[data-viewport="mobile"] #collage {
 
 .timeline-inner {
   padding: clamp(18px, 4vw, 28px) clamp(4px, 1.2vw, 10px);
-  padding: clamp(18px, 4vw, 28px) clamp(6px, 1.5vw, 12px);
 }
 
 .timeline-list {
@@ -567,9 +566,6 @@ body[data-viewport="mobile"] #collage {
   grid-template-columns: var(--timeline-date-col) var(--timeline-axis-col) minmax(0, 1fr);
   grid-template-rows: auto;
   column-gap: var(--timeline-gap);
-  justify-items: stretch;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
   justify-items: center;
   row-gap: 0;
 }
@@ -659,7 +655,6 @@ body[data-viewport="mobile"] #collage {
   grid-column: 3;
   grid-row: 1;
   padding-inline: var(--timeline-role-pad);
-  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
   font-weight: 600;
   font-size: var(--size-md);
   line-height: 1.4;
@@ -673,7 +668,6 @@ body[data-viewport="mobile"] #collage {
   grid-column: 3;
   grid-row: 2;
   padding-inline: var(--timeline-role-pad);
-  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
   font-size: var(--size-sm);
   color: var(--fg-muted);
   text-transform: none;
