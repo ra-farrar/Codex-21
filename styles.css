@@ -593,6 +593,19 @@ body[data-viewport="mobile"] #collage {
   display: contents;
 }
 
+.timeline-badge {
+  grid-column: 3;
+  grid-row: 1;
+  align-self: start;
+  padding-inline: var(--timeline-role-pad);
+  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
+  font-family: 'Angkor', cursive;
+  font-size: var(--size-md);
+  color: var(--subhead-arrow);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
 .timeline-axis {
   position: relative;
   display: flex;
