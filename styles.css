@@ -517,6 +517,13 @@ body[data-viewport="mobile"] #collage {
 .section--timeline {
   --section-bg: var(--elev);
   --section-border: 1px solid transparent;
+  /* Size the date column just wide enough to fit the two-line date on the first Amazon role. */
+  --timeline-date-col: calc(8ch + 4px);
+  --timeline-axis-col: 18px;
+  --timeline-gap: clamp(2px, 1vw, 8px);
+  --timeline-role-pad: clamp(6px, 2vw, 14px);
+  --timeline-date-pad: 0px;
+  --timeline-dot-offset: clamp(6px, 1.4vw, 10px);
   --timeline-date-col: clamp(60px, 16vw, 84px);
   --timeline-axis-col: 18px;
   --timeline-gap: clamp(2px, 1vw, 8px);
