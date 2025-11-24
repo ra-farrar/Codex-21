@@ -564,6 +564,23 @@ body[data-viewport="mobile"] #collage {
   align-items: stretch;
 }
 
+.timeline-item--label {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  justify-items: center;
+  row-gap: 0;
+}
+
+.timeline-label {
+  width: 100%;
+  text-align: center;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--subhead-arrow);
+  padding-inline: var(--timeline-role-pad);
+}
+
 .timeline-column {
   min-width: 0;
 }
