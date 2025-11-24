@@ -517,8 +517,7 @@ body[data-viewport="mobile"] #collage {
 .section--timeline {
   --section-bg: var(--elev);
   --section-border: 1px solid transparent;
-  /* Keep the date column only as wide as the text plus its padding */
-  --timeline-date-col: max-content;
+  --timeline-date-col: clamp(86px, 22vw, 120px);
   --timeline-axis-col: 20px;
   --timeline-gap: clamp(4px, 1.6vw, 10px);
   --timeline-role-pad: clamp(6px, 2vw, 14px);
@@ -580,12 +579,11 @@ body[data-viewport="mobile"] #collage {
   display: flex;
   justify-content: center;
   text-align: center;
-  font-family: 'Angkor', cursive;
   width: 100%;
   text-align: center;
-  font-family: 'Space Mono', monospace;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-family: 'Angkor', cursive;
+  font-weight: 400;
+  letter-spacing: normal;
   color: var(--subhead-arrow);
   padding-inline: var(--timeline-role-pad);
 }
