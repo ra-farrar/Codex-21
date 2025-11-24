@@ -534,6 +534,8 @@ body[data-viewport="mobile"] #collage {
     max-width: min(92vw, var(--page-max));
     overflow: auto;
     overscroll-behavior: contain;
+    height: clamp(320px, 70vh, 640px);
+    max-width: min(92vw, var(--page-max));
   }
 }
 
