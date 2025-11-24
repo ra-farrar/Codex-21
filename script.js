@@ -116,6 +116,74 @@ refreshViewportMode();
   }
 })();
 
+// ========== Timeline active dot animation ==========
+(function () {
+  const DOT_SELECTOR = '.section--timeline .timeline-dot';
+  let rafId = 0;
+  let activeIndex = -1;
+
+  function setActive(index, dots) {
+    if (index === activeIndex) return;
+    if (activeIndex >= 0 && dots[activeIndex]) dots[activeIndex].classList.remove('is-active');
+    if (index >= 0 && dots[index]) dots[index].classList.add('is-active');
+    activeIndex = index;
+  }
+
+  function updateActiveDot() {
+    rafId = 0;
+    const dots = Array.from(document.querySelectorAll(DOT_SELECTOR));
+    if (!dots.length) return;
+
+    const viewportHeight = (window.visualViewport && window.visualViewport.height) || window.innerHeight || document.documentElement.clientHeight || 0;
+    const targetY = viewportHeight * 0.25;
+
+    let bestIndex = -1;
+    let bestDistance = Infinity;
+    let bestPassed = false;
+
+    dots.forEach((dot, index) => {
+      const rect = dot.getBoundingClientRect();
+      const centerY = rect.top + rect.height / 2;
+      const distance = Math.abs(centerY - targetY);
+      const passed = centerY <= targetY;
+
+      if (
+        // Prefer any dot that has crossed the target line
+        (!bestPassed && passed) ||
+        // If both are on the same side of the line, take the one closest to it
+        (passed === bestPassed && distance < bestDistance)
+      ) {
+        bestIndex = index;
+        bestDistance = distance;
+        bestPassed = passed;
+      }
+    });
+
+    if (bestIndex === -1) bestIndex = 0;
+    setActive(bestIndex, dots);
+  }
+
+  function scheduleUpdate() {
+    if (rafId) return;
+    rafId = window.requestAnimationFrame(updateActiveDot);
+  }
+
+  function initTimelineActiveDot() {
+    scheduleUpdate();
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    document.addEventListener('scroll', scheduleUpdate, { passive: true, capture: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    document.addEventListener('viewportchange', scheduleUpdate, { passive: true });
+    window.addEventListener('load', scheduleUpdate, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTimelineActiveDot, { once: true });
+  } else {
+    initTimelineActiveDot();
+  }
+})();
+
 // ========== Theme Handling (Light/Dark toggle only) ==========
 const root = document.documentElement;
 const toggle = document.getElementById('themeToggle');
