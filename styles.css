@@ -523,6 +523,12 @@ body[data-viewport="mobile"] #collage {
   --timeline-role-pad: clamp(6px, 2vw, 14px);
   --timeline-date-pad: 0px;
   --timeline-dot-offset: clamp(6px, 1.4vw, 10px);
+  --timeline-date-col: clamp(72px, 20vw, 104px);
+  --timeline-axis-col: 20px;
+  --timeline-gap: clamp(4px, 1.4vw, 10px);
+  --timeline-role-pad: clamp(6px, 2vw, 14px);
+  --timeline-date-pad: 0px;
+  --timeline-dot-offset: clamp(8px, 1.8vw, 12px);
   --timeline-dot-lift: clamp(8px, 1.6vw, 14px);
   padding: 0;
   font-family: 'Inter Tight', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
