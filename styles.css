@@ -644,9 +644,20 @@ body[data-viewport="mobile"] #collage {
   display: block;
 }
 
-.timeline-company {
+.timeline-badge {
   grid-column: 3;
   grid-row: 2;
+  padding-inline: var(--timeline-role-pad);
+  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
+  font-size: var(--size-sm);
+  color: var(--subhead-arrow);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.timeline-company {
+  grid-column: 3;
+  grid-row: 3;
   padding-inline: var(--timeline-role-pad);
   padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
   font-size: var(--size-sm);
