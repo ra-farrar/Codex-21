@@ -146,6 +146,63 @@ p,h1,h2,h3,h4,h5,h6{margin:0}
 .page{width:min(100%,var(--page-max));margin:0 auto;padding:24px var(--page-padding-inline) 64px}
 .section{background:var(--section-bg,transparent);color:var(--section-fg,var(--fg));border-radius:var(--section-radius,0px);padding:clamp(16px,3vw,28px);margin-block:clamp(10px,2vw,20px);border:var(--section-border,1px solid transparent)}
 
+
+/* Desktop-only shell that mirrors the Framer inspiration */
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: clamp(32px, 6vh, 88px) clamp(28px, 7vw, 96px);
+    background:
+      radial-gradient(circle at 18% 16%, rgba(22, 0, 255, 0.12), transparent 42%),
+      radial-gradient(circle at 84% 18%, rgba(255, 57, 56, 0.12), transparent 36%),
+      radial-gradient(circle at 50% 78%, rgba(0, 0, 0, 0.04), transparent 44%),
+      var(--muted);
+  }
+
+  html[data-theme="dark"] body {
+    background:
+      radial-gradient(circle at 18% 16%, rgba(138, 180, 255, 0.18), transparent 42%),
+      radial-gradient(circle at 84% 18%, rgba(253, 57, 56, 0.18), transparent 38%),
+      radial-gradient(circle at 50% 78%, rgba(12, 13, 16, 0.6), transparent 46%),
+      var(--bg);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] body {
+      background:
+        radial-gradient(circle at 18% 16%, rgba(138, 180, 255, 0.18), transparent 42%),
+        radial-gradient(circle at 84% 18%, rgba(253, 57, 56, 0.18), transparent 38%),
+        radial-gradient(circle at 50% 78%, rgba(12, 13, 16, 0.6), transparent 46%),
+        var(--bg);
+    }
+  }
+
+  .page {
+    width: clamp(880px, 68vw, 1220px);
+    padding: clamp(40px, 4vw, 72px) clamp(36px, 4vw, 68px) clamp(68px, 6vh, 96px);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.92));
+    border-radius: 32px;
+    border: 1px solid var(--border);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.08), 0 10px 25px rgba(0, 0, 0, 0.04);
+  }
+
+  html[data-theme="dark"] .page {
+    background: linear-gradient(180deg, rgba(18, 19, 22, 0.94), rgba(18, 19, 22, 0.9));
+    border-color: #2a2e34;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 12px 26px rgba(0, 0, 0, 0.32);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html[data-theme="auto"] .page {
+      background: linear-gradient(180deg, rgba(18, 19, 22, 0.94), rgba(18, 19, 22, 0.9));
+      border-color: #2a2e34;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5), 0 12px 26px rgba(0, 0, 0, 0.32);
+    }
+  }
+}
 /* In dark mode keep surface containers transparent so the background is continuous */
 html[data-theme="dark"] .section--box,
 html[data-theme="dark"] .section--cta {
