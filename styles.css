@@ -527,6 +527,27 @@ body[data-viewport="mobile"] #collage {
   background: var(--elev);
 }
 
+@media (min-width: 1024px) {
+  /* Keep the desktop collage container comfortably within the viewport */
+  #collage .collage__frame {
+    /* Cap the frame size and keep it within the visible area */
+    width: min(92vw, var(--page-max));
+    height: min(460px, calc(100vh - 220px));
+    max-height: min(520px, calc(100vh - 220px));
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+  }
+
+  @supports (height: 100dvh) {
+    #collage .collage__frame {
+      height: min(460px, calc(100dvh - 220px));
+      max-height: min(520px, calc(100dvh - 220px));
+    }
+  }
+}
+
 /* ======== Mobile Timeline ======== */
 #timeline { display: block; }
 
