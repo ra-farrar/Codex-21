@@ -666,6 +666,12 @@ body[data-viewport="mobile"] #collage {
 }
 
 .timeline-item--amazon .timeline-employer-badge {
+.timeline-item--amazon .timeline-employer-badge {
+.timeline-item--amazon .timeline-employer {
+  grid-column: 3;
+  grid-row: 1;
+  padding-inline: var(--timeline-role-pad);
+  padding-inline: var(--timeline-role-pad) calc(var(--timeline-role-pad) / 2);
   font-family: 'Angkor', sans-serif;
   font-size: var(--size-md);
   color: var(--subhead-arrow);
@@ -684,6 +690,12 @@ body[data-viewport="mobile"] #collage {
   grid-column: auto;
   grid-row: auto;
   padding-inline: 0;
+.timeline-item--amazon .timeline-role {
+  grid-row: 2;
+}
+
+.timeline-item--amazon .timeline-company {
+  grid-row: 3;
 }
 
 @media (min-width: 768px) {
