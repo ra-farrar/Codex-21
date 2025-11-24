@@ -30,6 +30,8 @@
   /* Page layout */
   --page-max: 1100px;
   --page-padding-inline: clamp(20px, 6vw, 28px);
+  --master-margin: clamp(12px, 3vw, 28px);
+  --master-radius: 32px;
 
   /* Debug helpers (mobile system colors) */
   --ol-blue: 26,115,232;   /* sections */
@@ -144,6 +146,46 @@ p,h1,h2,h3,h4,h5,h6{margin:0}
 
 /* ========== Layout ========== */
 .page{width:min(100%,var(--page-max));margin:0 auto;padding:24px var(--page-padding-inline) 64px}
+.desktop-master{width:100%;}
+.desktop-master>.page{padding:24px var(--page-padding-inline) 64px}
+
+@media (max-width: 1023.98px) {
+  .desktop-master {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    overflow: visible;
+    height: auto;
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    background: var(--muted);
+  }
+
+  .desktop-master {
+    max-width: 1400px;
+    height: calc(100vh - (var(--master-margin) * 2));
+    margin: var(--master-margin) auto;
+    padding: clamp(18px, 2.5vw, 32px);
+    background: var(--elev);
+    border: 1px solid var(--border);
+    border-radius: var(--master-radius);
+    box-shadow: 0 24px 72px rgba(0,0,0,0.14);
+    overflow: hidden;
+    display: flex;
+  }
+
+  .desktop-master>.page {
+    height: 100%;
+    overflow-y: auto;
+    padding-bottom: 72px;
+  }
+}
 .section{background:var(--section-bg,transparent);color:var(--section-fg,var(--fg));border-radius:var(--section-radius,0px);padding:clamp(16px,3vw,28px);margin-block:clamp(10px,2vw,20px);border:var(--section-border,1px solid transparent)}
 
 /* In dark mode keep surface containers transparent so the background is continuous */
