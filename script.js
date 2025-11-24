@@ -134,12 +134,35 @@ refreshViewportMode();
     const dots = Array.from(document.querySelectorAll(DOT_SELECTOR));
     if (!dots.length) return;
 
+    const viewportHeight = (window.visualViewport && window.visualViewport.height) || window.innerHeight || document.documentElement.clientHeight || 0;
+    const targetY = viewportHeight * 0.25;
+
+    let bestIndex = -1;
+    let bestDistance = Infinity;
+    let bestPassed = false;
     const targetY = (window.innerHeight || document.documentElement.clientHeight || 0) * 0.25;
     let nextIndex = -1;
 
     dots.forEach((dot, index) => {
       const rect = dot.getBoundingClientRect();
       const centerY = rect.top + rect.height / 2;
+      const distance = Math.abs(centerY - targetY);
+      const passed = centerY <= targetY;
+
+      if (
+        // Prefer any dot that has crossed the target line
+        (!bestPassed && passed) ||
+        // If both are on the same side of the line, take the one closest to it
+        (passed === bestPassed && distance < bestDistance)
+      ) {
+        bestIndex = index;
+        bestDistance = distance;
+        bestPassed = passed;
+      }
+    });
+
+    if (bestIndex === -1) bestIndex = 0;
+    setActive(bestIndex, dots);
       if (centerY <= targetY) nextIndex = index;
     });
 
@@ -155,6 +178,10 @@ refreshViewportMode();
   function initTimelineActiveDot() {
     scheduleUpdate();
     window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    document.addEventListener('scroll', scheduleUpdate, { passive: true, capture: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    document.addEventListener('viewportchange', scheduleUpdate, { passive: true });
+    window.addEventListener('load', scheduleUpdate, { passive: true });
     window.addEventListener('resize', scheduleUpdate, { passive: true });
     document.addEventListener('viewportchange', scheduleUpdate, { passive: true });
   }
