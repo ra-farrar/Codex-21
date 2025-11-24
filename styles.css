@@ -148,6 +148,12 @@ p,h1,h2,h3,h4,h5,h6{margin:0}
 .page{width:min(100%,var(--page-max));margin:0 auto;padding:24px var(--page-padding-inline) 64px}
 .desktop-master{width:100%;}
 .desktop-master>.page{padding:24px var(--page-padding-inline) 64px}
+.master-grid{display:flex;flex-direction:column;gap:clamp(12px,3vw,20px);height:100%}
+.master-col{position:relative}
+.master-col--resume{display:flex;align-items:flex-start;justify-content:flex-start;padding:clamp(16px,3vw,20px);border:1px solid var(--border);border-radius:calc(var(--master-radius) - 8px);background:var(--muted);color:var(--fg);text-transform:uppercase;letter-spacing:0.12em;font-family:'Space Mono',monospace;font-weight:700;font-size:var(--size-sm)}
+.master-col__label{background:var(--elev);padding:12px 14px;border-radius:12px;border:1px solid var(--border)}
+.master-col--content{min-height:0}
+.master-col--content>.page{height:100%;overflow-y:auto}
 
 @media (max-width: 1023.98px) {
   .desktop-master {
@@ -177,12 +183,25 @@ p,h1,h2,h3,h4,h5,h6{margin:0}
     border-radius: var(--master-radius);
     box-shadow: 0 24px 72px rgba(0,0,0,0.14);
     overflow: hidden;
-    display: flex;
+    display: block;
   }
 
-  .desktop-master>.page {
+  .master-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: clamp(16px, 2vw, 28px);
+  }
+
+  .master-col--resume {
     height: 100%;
-    overflow-y: auto;
+  }
+
+  .master-col--content {
+    height: 100%;
+    background: transparent;
+  }
+
+  .master-col--content>.page {
     padding-bottom: 72px;
   }
 }
@@ -216,6 +235,10 @@ html[data-debug="1"] #animation .animation-shell { outline:2px dashed rgba(var(-
 html[data-debug="1"] #animation .animation-stage { outline:2px dashed rgba(var(--ol-purple),.9); }
 html[data-debug="1"] #collage { outline:2px dashed rgba(var(--ol-blue),.9); }
 html[data-debug="1"] #collage .collage__frame { outline:2px dashed rgba(var(--ol-green),.9); outline-offset: 6px; }
+html[data-debug="1"] .master-grid { outline:2px dashed rgba(var(--ol-blue),.85); }
+html[data-debug="1"] .master-col--resume { outline:2px dashed rgba(var(--ol-green),.9); }
+html[data-debug="1"] .master-col--content { outline:2px dashed rgba(var(--ol-purple),.9); }
+html[data-debug="1"] .master-col__label { outline:2px dashed rgba(var(--ol-orange),.85); outline-offset: 4px; }
 html[data-debug="1"] #animation .animation-stage::after {
   content: attr(data-debug-info);
   position: absolute;
