@@ -565,6 +565,10 @@ body[data-viewport="mobile"] #collage {
 }
 
 .timeline-item--label {
+  grid-template-columns: var(--timeline-date-col) var(--timeline-axis-col) minmax(0, 1fr);
+  grid-template-rows: auto;
+  column-gap: var(--timeline-gap);
+  justify-items: stretch;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   justify-items: center;
@@ -572,6 +576,11 @@ body[data-viewport="mobile"] #collage {
 }
 
 .timeline-label {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Angkor', cursive;
   width: 100%;
   text-align: center;
   font-family: 'Space Mono', monospace;
