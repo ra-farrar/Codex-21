@@ -527,6 +527,14 @@ body[data-viewport="mobile"] #collage {
   background: var(--elev);
 }
 
+@media (min-width: 1024px) {
+  /* Keep the desktop collage container comfortably within the viewport */
+  #collage .collage__frame {
+    height: clamp(320px, 70vh, 640px);
+    max-width: min(92vw, var(--page-max));
+  }
+}
+
 /* ======== Mobile Timeline ======== */
 #timeline { display: block; }
 
